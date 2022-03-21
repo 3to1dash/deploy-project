@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
     node: circleci/node@5.0.1
+    # aws-cli: circleci/aws-cli@2.1.0
 jobs:
     build:
         docker:
@@ -9,6 +10,6 @@ jobs:
             - checkout
             - node/install
             - run:
-                name: hello
+                name: Front-End Install
                 command: |
-                    echo "hello-world"
+                    npm run frontend:install

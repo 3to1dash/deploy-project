@@ -15,6 +15,9 @@
   "keywords": [],
   "author": "Gabriel Ruttner",
   "license": "ISC",
+  "engines" : { 
+    "node" : "16.13.0"
+  },
   "dependencies": {
     "@types/bcrypt": "^3.0.0",
     "@types/jsonwebtoken": "^8.3.2",
