@@ -6,8 +6,8 @@ jobs:
         docker:
             - image: "cimg/base:stable"
         steps:
-            - node/install-packages
             - checkout
+            - node/install-packages
             - run:
                 name: hello
                 command: |
