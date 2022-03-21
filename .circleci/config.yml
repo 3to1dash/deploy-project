@@ -1,0 +1,14 @@
+version: 2.1
+orbs:
+    node: circleci/node@5.0.1
+jobs:
+    build:
+        docker:
+            - image: "cimg/base:stable"
+        steps:
+            - node/install-packages
+            - checkout
+            - run:
+                name: hello
+                command: |
+                    echo "hello-world"
