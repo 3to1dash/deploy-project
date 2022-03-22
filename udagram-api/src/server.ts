@@ -8,16 +8,12 @@ import { IndexRouter } from "./controllers/v0/index.router";
 import bodyParser from "body-parser";
 import { V0_FEED_MODELS, V0_USER_MODELS } from "./controllers/v0/model.index";
 
-(async (): Promise<void> => {
+(async () => {
   dotenv.config();
 
-  sequelize.addModels(V0_FEED_MODELS);
-  sequelize.addModels(V0_USER_MODELS);
-  try {
-    await sequelize.sync();
-  } catch (error) {
-    throw new Error(`${error}`);
-  }
+  await sequelize.addModels(V0_FEED_MODELS);
+  await sequelize.addModels(V0_USER_MODELS);
+  await sequelize.sync();
 
   console.log("Database Connected");
 
