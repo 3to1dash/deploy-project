@@ -1,13 +1,16 @@
 
 {
-    "engines" : { 
-        "node" : "16.13.0"
-    },
     "scripts": {
         "frontend:install": "cd udagram-frontend && npm install",
         "backend:install": "cd udagram-api && npm install",
-        "frontend:build": "cd udagram-frontend && npm run build",
-        "backend:build": "cd udagram-api && npm run build"
+        "frontend:build": "cd udagram-frontend && npm run build:prod",
+        "backend:build": "cd udagram-api && npm run build",
+        "backend:deploy": "cd udagram-api && eb deploy",
+        "frontend:deploy": "cd udagram-frontend && npm run deploy"
+    },
+    "engines" : { 
+        "npm": ">=6.14.8",
+        "node" : ">=14.15.1"
     },
     "devDependencies": {}
 }

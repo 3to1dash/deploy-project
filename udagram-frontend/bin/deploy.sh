@@ -1,1 +1,1 @@
-aws cp --recursive --acl public-read ./build s3://udagram-test01/
+aws s3 cp --recursive --acl public-read ./www s3://elasticbeanstalk-us-east-1-079290547713/
