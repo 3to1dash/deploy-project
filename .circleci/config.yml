@@ -36,8 +36,7 @@ jobs:
             - run:
                 name: Back-End Elastic Beanstack initialization
                 command: |
-                    ls
-                    pwd
+                    ls project
                     cd udagram/udagram-api
                     eb init udagram -r $AWS_DEFAULT_REGION -p node.js
             - run:
