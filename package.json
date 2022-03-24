@@ -5,6 +5,7 @@
         "backend:install": "cd udagram-api && npm install",
         "frontend:build": "cd udagram-frontend && npm run build:prod",
         "backend:build": "cd udagram-api && npm run build",
+        "backend:init": "cd udagram/udagram-api && eb init udagram -r $AWS_DEFAULT_REGION -p node.js",
         "backend:deploy": "cd udagram-api && eb deploy",
         "frontend:deploy": "cd udagram-frontend && npm run deploy"
     },
