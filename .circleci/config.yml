@@ -10,9 +10,6 @@ jobs:
         steps:
             - checkout
             - node/install
-            - aws-cli/setup:
-                profile-name: default
-            - eb/setup
             - run:
                 name: Front-End Install
                 command: |
@@ -33,6 +30,10 @@ jobs:
         docker:
             - image: "cimg/base:stable"
         steps:
+            - checkout
+            - node/install
+            - aws-cli/setup
+            - eb/setup
             - run:
                 name: Back-End Elastic Beanstack initialization
                 command: |
