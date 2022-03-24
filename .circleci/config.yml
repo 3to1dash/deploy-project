@@ -38,6 +38,7 @@ jobs:
                 name: Back-End Elastic Beanstack initialization
                 command: |
                     npm run backend:init
+                    eb use udagram-api
             - run:
                 name: Back-End Deploy
                 command: |
