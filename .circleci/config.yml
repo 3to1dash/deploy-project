@@ -4,19 +4,12 @@ orbs:
     aws-cli: circleci/aws-cli@2.1.0
     eb: circleci/aws-elastic-beanstalk@2.0.1
 jobs:
-    install:
-        docker: 
-            - image: cimg/base:stable
-        steps:
-            - checkout
-            - node/install
-            - aws-cli/setup
-            - eb/setup
-
     build:
         docker:
             - image: "cimg/base:stable"
         steps:
+            - checkout
+            - node/install
             - run:
                 name: Front-End Install
                 command: |
@@ -33,11 +26,18 @@ jobs:
                 name: Back-End Build
                 command: |
                     npm run backend:build
-
+            - persist_to_workspace:
+                root: ~/project
+                paths:
+                    - .
     deploy:
         docker:
             - image: "cimg/base:stable"
         steps:
+            - checkout
+            - node/install
+            - aws-cli/setup
+            - eb/setup
             - run:
                 name: Back-End Elastic Beanstack initialization
                 command: |
@@ -46,6 +46,8 @@ jobs:
                 name: Back-End Deploy
                 command: |
                     npm run backend:deploy
+            - attach_workspace:
+                at: ~/project
             - run:
                 name: Front-End Deploy
                 command: |
@@ -54,10 +56,7 @@ jobs:
 workflows:
   build-approval-deploy:
     jobs:
-        - install
-        - build:
-            requires:
-              - install
-        - deploy:
+      - build
+      - deploy:
             requires:
                 - build
