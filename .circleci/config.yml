@@ -39,6 +39,12 @@ jobs:
             - aws-cli/setup
             - eb/setup
             - run:
+                name: AWS Configure
+                command: |
+                    aws configure set aws_access_key_id "$AWS_ACCESS_KEY_ID" --profile default
+                    aws configure set aws_secret_access_key "$AWS_ACCESS_KEY_SECRET" --profile default
+                    aws configure set region "$AWS_REGION" --profile default
+            - run:
                 name: Back-End Elastic Beanstack initialization
                 command: |
                     npm run backend:init
